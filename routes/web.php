@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenumpangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,7 @@ Route::group(['prefix' => '/kereta'],
 // add route group for penumpang
 Route::group(['prefix' => '/penumpang'],
     function () {
-        Route::get('/all', function () {
-            return view('penumpang.all');
-        });
+        Route::get('/all',[PenumpangController::class, 'index']);
+
     }
 );
