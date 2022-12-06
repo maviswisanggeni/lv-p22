@@ -18,7 +18,7 @@ class PenumpangFactory extends Factory
     {
         return [
             'kereta_id' => mt_rand(1,5),
-            'nik'       => fake()->nik(),
+            'nik'       => fake()->numerify('#######'),
             'nama'      => fake()->name(),
             'umur'      => mt_rand(1, 99),
             'alamat'    => fake()->address(),
