@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+// add route group for kereta
+Route::group(['prefix' => '/kereta'],
+    function () {
+        Route::get('/all', function () {
+            return view('kereta.all');
+        });
+    }
+);
+
+// add route group for penumpang
+Route::group(['prefix' => '/penumpang'],
+    function () {
+        Route::get('/all', function () {
+            return view('penumpang.all');
+        });
+    }
+);
