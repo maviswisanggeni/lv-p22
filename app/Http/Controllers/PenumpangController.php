@@ -14,7 +14,7 @@ class PenumpangController extends Controller
      */
     public function index()
     {
-        return view('penumpang.all',["data_penumpang" => penumpang::all()]);
+        return view('penumpang.all',["data_penumpang" => Penumpang::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class PenumpangController extends Controller
      */
     public function create()
     {
-        //
+        return view('penumpang.create');
     }
 
     /**
@@ -35,7 +35,13 @@ class PenumpangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valideData = $request->validate([
+            'nama' => 'required|min:3|max:50',
+            'alamat' => 'required',
+        ]);
+
+        Penumpang::create($valideData);
+        return redirect('/penumpang/all')->with('status', 'Data Penumpang Berhasil Ditambahkan');
     }
 
     /**
@@ -44,9 +50,11 @@ class PenumpangController extends Controller
      * @param  \App\Models\penumpang  $penumpang
      * @return \Illuminate\Http\Response
      */
-    public function show(penumpang $penumpang)
+    public function show(Penumpang $penumpang)
     {
-        //
+        return view('penumpang.detail', [
+            'penumpang' => $penumpang
+        ]);
     }
 
     /**
@@ -55,9 +63,11 @@ class PenumpangController extends Controller
      * @param  \App\Models\penumpang  $penumpang
      * @return \Illuminate\Http\Response
      */
-    public function edit(penumpang $penumpang)
+    public function edit(Penumpang $penumpang)
     {
-        //
+        return view('penumpang.edit', [
+            'penumpang' => $penumpang
+        ]);
     }
 
     /**
@@ -69,7 +79,16 @@ class PenumpangController extends Controller
      */
     public function update(Request $request, penumpang $penumpang)
     {
-        //
+        $rules = [
+            'nama' => 'required|min:3|max:50',
+            'alamat' => 'required',
+        ];
+
+        $valideData = $request->validate($rules);
+        Penumpang::where('id', $penumpang->id)
+            ->update($valideData);
+
+        return redirect('/penumpang/all')->with('status', 'Data Penumpang Berhasil Diubah');
     }
 
     /**
@@ -80,6 +99,7 @@ class PenumpangController extends Controller
      */
     public function destroy(penumpang $penumpang)
     {
-        //
+        Penumpang::destroy($penumpang->id);
+        return redirect('/penumpang/all')->with('status', 'Data Penumpang Berhasil Dihapus');
     }
 }
