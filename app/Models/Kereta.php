@@ -10,4 +10,8 @@ class Kereta extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function Penumpang(){
+        return $this->hasMany(Penumpang::class);
+    }
 }

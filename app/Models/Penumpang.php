@@ -10,4 +10,8 @@ class Penumpang extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function Kereta(){
+        return $this->belongsTo(Kereta::class);
+    }
 }

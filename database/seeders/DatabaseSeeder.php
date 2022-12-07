@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Penumpang::factory(10)->create();
+        Penumpang::factory(100)->create();
 
         Kereta::factory()->create([
             'nama_kereta'   => 'KA Argo Bromo Anggrek',
