@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Gerbong;
 use App\Models\Kereta;
 use App\Models\Penumpang;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Penumpang::factory(100)->create();
+
+        Gerbong::factory(10)->create();
 
         Kereta::factory()->create([
             'nama_kereta'   => 'KA Argo Bromo Anggrek',

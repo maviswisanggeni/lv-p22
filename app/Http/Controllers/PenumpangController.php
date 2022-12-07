@@ -23,9 +23,11 @@ class PenumpangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Penumpang $penumpang) 
     {
-        return view('penumpang.create', ["kereta" => Kereta::all()]);
+        return view('penumpang.create', ["kereta" => Kereta::all(),
+            'penumpang' => $penumpang
+    ]);
     }
 
     /**

@@ -16,8 +16,8 @@
                 <form method="post" action="/penumpang/add">
                     @csrf
                     <div class="form-group mb-6">
-                        <label for="kereta_id" class="block text-sm font-medium text-gray-700">Kereta Id</label>
-                        <input type="number" name="kereta_id" id="kereta_id" placeholder="Masukkan kereta id" class="form-control
+                        <label for="kereta" class="block text-sm font-medium text-gray-700">kereta</label>
+                        <select name="kereta_id" id="" class="form-select
                         block
                         w-full
                         px-3
@@ -31,7 +31,16 @@
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{ old('kereta_id') }}" required>
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
+                            <option value="" selected hidden>Pilih Kereta</option>
+                            @foreach ($kereta as $kendaraan)
+                                @if (old('kereta_id', $penumpang->kereta_id == $kendaraan->id))
+                                    <option name="kereta_id" value="{{ $kendaraan->id }}" selected>{{ $kendaraan->nama_kereta }}</option>
+                                @else
+                                <option name="kereta_id" value="{{ $kendaraan->id }}">{{ $kendaraan->nama_kereta }}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group mb-6">
                         <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
