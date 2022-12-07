@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::group(['prefix' => '/kereta'],
     function () {
         Route::get('/all',[KeretaController::class, 'index']);
+        Route::get('/detail/{kereta}', [KeretaController::class, 'show']);
     }
 );
 

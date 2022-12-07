@@ -54,7 +54,7 @@
                                         <div class="text-sm text-gray-900">{{ $kereta->tujuan }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Detail</a>
+                                        <a href="detail/{{ $kereta->id }}" class="text-indigo-600 hover:text-indigo-900">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -46,7 +46,9 @@ class KeretaController extends Controller
      */
     public function show(Kereta $kereta)
     {
-        //
+        return view('kereta.detail', [
+            'kereta' => $kereta
+        ]);
     }
 
     /**
