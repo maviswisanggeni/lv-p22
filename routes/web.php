@@ -21,9 +21,7 @@ Route::get('/', function () {
 // add route group for kereta
 Route::group(['prefix' => '/kereta'],
     function () {
-        Route::get('/all', function () {
-            return view('kereta.all');
-        });
+        Route::get('/all',[KeretaController::class, 'index']);
     }
 );
 
@@ -31,11 +29,6 @@ Route::group(['prefix' => '/kereta'],
 Route::group(['prefix' => '/penumpang'],
     function () {
         Route::get('/all',[PenumpangController::class, 'index']);
-        Route::get('/detail/{penumpang}',[PenumpangController::class, 'show']);
-        Route::get('/create',[PenumpangController::class, 'create']);
-        Route::post('/add',[PenumpangController::class, 'store']);
-        Route::delete('/delete/{penumpang}',[PenumpangController::class, 'destroy']);
-        Route::get('/edit/{penumpang}',[PenumpangController::class, 'edit']);
-        Route::post('/update/{penumpang}',[PenumpangController::class, 'update']);
+
     }
 );
