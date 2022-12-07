@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('keretas', function (Blueprint $table) {
             $table->id();
-            $table->nama_kereta();
-            $table->tipe();
-            $table->masinis();
-            $table->stasiun();
-            $table->tujuan();
+            $table->string('nama_kereta');
+            $table->string('tipe');
+            $table->string('masinis');
+            $table->string('stasiun');
+            $table->string('tujuan');
             $table->timestamps();
         });
     }
